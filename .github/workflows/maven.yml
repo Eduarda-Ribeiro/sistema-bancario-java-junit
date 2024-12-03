@@ -27,7 +27,11 @@ jobs:
       run: |
           javac --version
           mvn --version
-          mvn package 
+          # skipTests é uma variável de ambiente que indica que deve ignorar os testes, pois são 
+          # executados em um passo separado, por questões de organização dos logs.
+          mvn package -DskipTests
+    - name: Executar testes
+      run: mvn test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

@@ -23,7 +23,11 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn package
+      # o pipe | permite colocar comandos em múltiplas linhas
+      run: |
+          javac --version
+          mvn --version
+          mvn package 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
